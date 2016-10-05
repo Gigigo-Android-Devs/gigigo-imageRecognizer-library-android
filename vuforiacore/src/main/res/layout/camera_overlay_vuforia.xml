@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/camera_overlay_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/vuforia_loading_bg_color"
+    >
+
+  <LinearLayout
+      android:id="@+id/loading_container"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:gravity="center"
+      android:orientation="vertical"
+      >
+
+    <!--android:indeterminateTint="@color/vuforia_loading_indicator_color"
+     android:indeterminateDrawable="@drawable/abc_seekbar_track_material_ox"
+
+     android:indeterminate="true"
+        android:indeterminateTintMode="src_in"
+        android:background ="@xml/progress"-->
+
+    <ProgressBar
+        android:id="@+id/loading_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+         />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        style="@style/vuforiaCustomizationLoadingMessage"
+        android:layout_margin="@dimen/vuforia_loading_message_margin"
+        android:gravity="center"
+        android:textColor="@color/vuforia_loading_indicator_color"
+        android:id="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="49dp"
+        />
+
+  </LinearLayout>
+
+</RelativeLayout>

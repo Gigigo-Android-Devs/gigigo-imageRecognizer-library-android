@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <color name="ir_color_primary">#EE524F</color>
+  <color name="ir_color_primary_dark">#ac2a27</color>
+  <color name="ir_color_accent">#FFFFFF</color>
+  <color name="vuforia_loading_indicator_color">@color/ir_color_accent</color>
+  <color name="vuforia_loading_bg_color">@color/ir_color_primary</color>
+
+  <color name="ir_scan_point_color">@color/ir_color_primary</color>
+  <color name="ir_scan_line_color">@color/ir_color_accent</color>
+
+</resources>

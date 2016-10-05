@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_description">Escaner de Imagenes</string>
+
+  <string name="button_start">Comenzar</string>
+  <string name="activities_list_title_string">Escaner de Imagenes</string>
+  <string name="activities_list_empty">Vacio</string>
+
+  <string name="button_OK">OK</string>
+
+  <string name="UPDATE_ERROR_AUTHORIZATION_FAILED_TITLE">Error de autorización</string>
+  <string name="UPDATE_ERROR_PROJECT_SUSPENDED_TITLE">Error de autorización</string>
+  <string name="UPDATE_ERROR_NO_NETWORK_CONNECTION_TITLE">Sin conexión</string>
+  <string name="UPDATE_ERROR_SERVICE_NOT_AVAILABLE_TITLE">Servicio no disponible</string>
+  <string name="UPDATE_ERROR_UPDATE_SDK_TITLE">Versión no Soportada </string>
+  <string name="UPDATE_ERROR_TIMESTAMP_OUT_OF_RANGE_TITLE">Error de Sincronía</string>
+  <string name="UPDATE_ERROR_REQUEST_TIMEOUT_TITLE">Timeout</string>
+  <string name="UPDATE_ERROR_BAD_FRAME_QUALITY_TITLE">Mala calidad de Imagen</string>
+  <string name="UPDATE_ERROR_UNKNOWN_TITLE">Servicio no disponible</string>
+  <string name="UPDATE_ERROR_AUTHORIZATION_FAILED_DESC">Licencia caducada o erronea.</string>
+  <string name="UPDATE_ERROR_PROJECT_SUSPENDED_DESC">Servicio de reconocimiento de Imagen no disponible.</string>
+  <string name="UPDATE_ERROR_NO_NETWORK_CONNECTION_DESC">Comprueba tu conexión a internet e intenta nuevamente.</string>
+  <string name="UPDATE_ERROR_SERVICE_NOT_AVAILABLE_DESC">Servicio no disponible, por favor intenta nuevamente.</string>
+  <string name="UPDATE_ERROR_UPDATE_SDK_DESC">Versión antigua de Vuforia.</string>
+  <string name="UPDATE_ERROR_TIMESTAMP_OUT_OF_RANGE_DESC">Por favor comprueba que tu fecha y hora estén correctos.</string>
+  <string name="UPDATE_ERROR_REQUEST_TIMEOUT_DESC">Timeout, Comprueba tu conexión a internet e intenta nuevamente.</string>
+  <string name="UPDATE_ERROR_BAD_FRAME_QUALITY_DESC">La camara utilizada no tiene suficiente calidad, por favor intenta nuevamente.</string>
+  <string name="UPDATE_ERROR_UNKNOWN_DESC">Servicio no disponible, por favor intenta nuevamente.</string>
+  <string name="INIT_ERROR">Error</string>
+  <string name="INIT_ERROR_DEVICE_NOT_SUPPORTED">Error al inicializar Vuforia. El dispositivo es incompatible.</string>
+  <string name="INIT_ERROR_NO_CAMERA_ACCESS">Error al inicializar Vuforia. Camera no accesible</string>
+  <string name="INIT_LICENSE_ERROR_MISMATCH_KEY">La key de Vuforia no es válida para el producto solicitado. Compruebe en developer.vuforia.com escogiendo el producto válido en la creación de su proyecto.</string>
+  <string name="INIT_LICENSE_ERROR_MISSING_KEY">No se encuentra la Key de Vuforia. Compruebe en developer.vuforia.com.</string>
+  <string name="INIT_LICENSE_ERROR_INVALID_KEY">Clave de Vuforia inválida.</string>
+  <string name="INIT_LICENSE_ERROR_NO_NETWORK_TRANSIENT">No es posible conectar con el servidor.Intentelo de nuevo más tarde</string>
+  <string name="INIT_LICENSE_ERROR_NO_NETWORK_PERMANENT">Red no disponible, compruebe su conexión a internet.</string>
+  <string name="INIT_LICENSE_ERROR_CANCELED_KEY">Esta clave de licencia está caducada. Por favor genere una nueva clave de Licencia.</string>
+  <string name="INIT_LICENSE_ERROR_PRODUCT_TYPE_MISMATCH">La key de Vuforia no es válida para el producto solicitado. Compruebe en developer.vuforia.com escogiendo el producto válido en la creación de su proyecto.</string>
+  <string name="INIT_LICENSE_ERROR_UNKNOWN_ERROR">Error al inicializar Vuforia.</string>
+  <string name="INIT_OBJECT_DATASET_NOT_FOUND_TITLE">No se encuentra la Base de Datos</string>
+  <string name="INIT_OBJECT_DATASET_NOT_FOUND">Escanee un objecto para cargar la Base de Datos.</string>
+  <string name="content_desc_camera_button">Botón de Cámara</string>
+  <string name="overlay_build_target_help">Mantén la cámara en paralelo al objeto</string>
+  <string name="target_quality_error_title">Mala calidad de imagen</string>
+  <string name="target_quality_error_desc">La cámara utilizada no tiene suficiente calidad, por favor intenta con otra cámara.</string>
+
+  <string name="splash_screen_description">Escaner de Imagen Splash</string>
+  <string name="orchextra_auth_error_tag">Vuforia-SDK  ERROR</string>
+  <string name="orchextra_auth_error_text">ERROR: Las credenciales necesarias para Vuforia no han sido registradas.</string>
+  <string name="vuforia_loading_indicator_message">Cargando módulo de reconocimiento de imágenes...</string>
+
+</resources>

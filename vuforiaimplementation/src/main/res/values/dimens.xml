@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="actionbar_size_ir">54dp</dimen>
+  <dimen name="ir_toolbar_elevation">2dp</dimen>
+  <dimen name="spacing_8">8dp</dimen>
+  <dimen name="spacing_2">2dp</dimen>
+  <dimen name="text_21">21sp</dimen>
+  <dimen name="watermark_margin">8dp</dimen>
+
+</resources>

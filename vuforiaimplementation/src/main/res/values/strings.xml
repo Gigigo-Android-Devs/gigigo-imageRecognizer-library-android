@@ -1,0 +1,11 @@
+<resources>
+    <string name="ir_app_name">Vuforia Implementation</string>
+    <string name="ir_loading_indicator_message">Loading image recognition module ...</string>
+
+    <string name="ir_permission_settings">Settings</string>
+
+    <string name="ir_permission_denied_camera">Denied camera permission</string>
+    <string name="ir_permission_rationale_title_camera">Camera Permission</string>
+    <string name="ir_permission_rationale_message_camera">Image recognition need Camera device permission</string>
+
+</resources>

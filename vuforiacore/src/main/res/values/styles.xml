@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="vuforiaCustomizationLoadingMessage" >
+    <item name="android:text">@string/vuforia_loading_indicator_message</item>
+  </style>
+
+
+
+</resources>

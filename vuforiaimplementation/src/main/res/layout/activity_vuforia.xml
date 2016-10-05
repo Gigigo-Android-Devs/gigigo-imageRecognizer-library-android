@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+  <include layout="@layout/ir_toolbar_view"/>
+
+  <!--This is the layout 4 add GLView from Vuforia-->
+  <RelativeLayout
+      android:id="@+id/layoutContentVuforiaGL"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@android:color/transparent">
+
+    <ImageView
+        android:id="@+id/scan_line"
+        android:layout_width="match_parent"
+        android:layout_height="50px"
+        android:src="@drawable/scanline"
+        android:scaleType="fitXY"/>
+    <!--This is a OverlayLayout 4 put the Ox Watermark-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/watermark_margin"
+        android:layout_marginRight="@dimen/watermark_margin"
+        android:gravity="end"
+        style="@style/irCustomizationScanWaterMark"
+        android:contentDescription="@null"
+        />
+  </RelativeLayout>
+
+</LinearLayout>
+
+
+
+
+
+

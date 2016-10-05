@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <style name="IrAppThemeNoBar"
+      parent="@android:style/Theme.Black.NoTitleBar">
+  </style>
+  <style name="irCustomizationScanWaterMark" >
+    <item name="android:background">@drawable/ir_watermark</item>
+  </style>
+
+  <style name="irCustomizationCloseScann" >
+    <item name="android:background">@drawable/ir_close_button</item>
+  </style>
+
+  <style name="vuforiaCustomizationLoadingMessage" >
+    <item name="android:text">@string/ir_loading_indicator_message</item>
+  </style>
+  
+</resources>
