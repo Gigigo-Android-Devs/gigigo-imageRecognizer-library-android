@@ -82,12 +82,12 @@ public class MarkFakeFeaturePoint extends View implements Runnable {
         } catch (Throwable tr) {
             bDisableIfThrowException = true;
         }
-        //this calculate the scanline distance
+        //this calculate the ir_scanline distance
         Random rand = new Random();
 
         x = randX.nextInt(xMax);
         y = randY.nextInt(yMax);
-        //get scanline currentposition
+        //get ir_scanline currentposition
         if (mAnimation != null && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB) {
             Random randy = new Random(); //earl!
 

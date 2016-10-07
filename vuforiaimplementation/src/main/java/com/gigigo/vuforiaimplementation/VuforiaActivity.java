@@ -124,7 +124,7 @@ public class VuforiaActivity extends FragmentActivity
             oay.setInterpolator(new LinearInterpolator());
             oay.start();
 
-            //for draw points near scanline
+            //for draw points near ir_scanline
             markFakeFeaturePoint.setObjectAnimator(oay);
         }
 

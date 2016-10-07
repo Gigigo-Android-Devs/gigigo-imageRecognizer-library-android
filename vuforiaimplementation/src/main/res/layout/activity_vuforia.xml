@@ -18,7 +18,7 @@
         android:id="@+id/scan_line"
         android:layout_width="match_parent"
         android:layout_height="50px"
-        android:src="@drawable/scanline"
+        android:src="@drawable/ir_scanline"
         android:scaleType="fitXY"/>
     <!--This is a OverlayLayout 4 put the Ox Watermark-->
     <ImageView
