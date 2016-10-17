@@ -1,12 +1,10 @@
 package com.gigigo.vuforiaimplementation;
 
-import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4ox.app.FragmentActivity;
-import android.support.v4ox.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +14,6 @@ import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
 
 import com.gigigo.ggglogger.GGGLogImpl;
-import com.gigigo.ggglogger.LogLevel;
 import com.gigigo.imagerecognitioninterface.ImageRecognitionConstants;
 import com.gigigo.vuforiacore.sdkimagerecognition.icloudrecognition.CloudRecognitionActivityLifeCycleCallBack;
 import com.gigigo.vuforiacore.sdkimagerecognition.icloudrecognition.ICloudRecognitionCommunicator;
@@ -73,7 +70,7 @@ public class VuforiaActivity extends FragmentActivity
     public void setContentViewTop(View vuforiaView) {
 
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.activity_vuforia, null);
+        View view = inflater.inflate(R.layout.ir_activity_vuforia, null);
         scanLine = view.findViewById(R.id.scan_line);
         RelativeLayout relativeLayout = (RelativeLayout) view.findViewById(R.id.layoutContentVuforiaGL);
         relativeLayout.addView(vuforiaView, 0);
