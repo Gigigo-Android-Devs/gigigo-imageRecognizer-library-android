@@ -50,7 +50,7 @@ import com.vuforia.Vuforia;
  */
 public class CloudRecognition implements ApplicationControl {
 
-    VuforiaSession vuforiaAppSession;
+   static VuforiaSession vuforiaAppSession;
 
     // These codes match the ones defined in TargetFinder in Vuforia.jar
     static final int INIT_SUCCESS = 2;
@@ -222,11 +222,15 @@ public class CloudRecognition implements ApplicationControl {
     // The final call you receive before your activity is destroyed.
     protected void on_Destroy() {
         try {
-            if (vuforiaAppSession != null) vuforiaAppSession.stopAR();
+            if (vuforiaAppSession != null) {
+                vuforiaAppSession.stopAR();
+                vuforiaAppSession=null;
+            }
         } catch (VuforiaException e) {
             GGGLogImpl.log(e.getMessage(), LogLevel.ERROR);
         }
         System.gc();
+
     }
     //endregion
 

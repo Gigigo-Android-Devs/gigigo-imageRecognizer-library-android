@@ -36,10 +36,12 @@ public class CloudRecognitionActivityLifeCycleCallBack implements Application.Ac
             GGGLogImpl.log(ex.getMessage(), LogLevel.ERROR);
         }
     }
+
     @Deprecated
     public void setUIScanLineColor(int color) {
         //not in Vuforia6
     }
+
     @Deprecated
     public void setUIPointColor(int color) {
         //not in Vuforia6
@@ -81,9 +83,10 @@ public class CloudRecognitionActivityLifeCycleCallBack implements Application.Ac
 
     @Override
     public void onActivityDestroyed(Activity activity) {
-        if (mActivity.equals(activity))
+        if (mActivity.equals(activity)) {
             this.mCloudReco.on_Destroy();
-        activity.getApplication().unregisterActivityLifecycleCallbacks(this);
+            activity.getApplication().unregisterActivityLifecycleCallbacks(this);
+        }
 
     }
     //endregion
