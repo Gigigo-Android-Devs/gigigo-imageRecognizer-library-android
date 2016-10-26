@@ -169,7 +169,6 @@ public class VuforiaActivity extends FragmentActivity
     public void onVuforiaResult(Trackable trackable, String uniqueId) {
         scanlineStop();
         sendRecognizedPatternToClient(uniqueId);
-        finish();
     }
 
     private void sendRecognizedPatternToClient(String uniqueId) {
@@ -186,6 +185,7 @@ public class VuforiaActivity extends FragmentActivity
             i.putExtra(appId, appId);
             i.setAction(RECOGNIZED_IMAGE_INTENT);
             this.sendBroadcast(i);
+            finish();
         }
     }
 }
