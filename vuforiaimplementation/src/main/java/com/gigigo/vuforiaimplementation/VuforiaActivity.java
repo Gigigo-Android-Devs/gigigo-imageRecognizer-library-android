@@ -1,6 +1,7 @@
 package com.gigigo.vuforiaimplementation;
 
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +25,8 @@ public class VuforiaActivity extends FragmentActivity
         implements ICloudRecognitionCommunicator {
 
     private static final String RECOGNIZED_IMAGE_INTENT = "com.gigigo.imagerecognition.intent.action.RECOGNIZED_IMAGE";
-    private static final int ANIM_DURATION =3000;
+    private static final int ANIM_DURATION = 3000;
+    int mCodeResult = -1;
     //basics for any vuforia activity
     //private View mView;
     private static CloudRecognitionActivityLifeCycleCallBack mCloudRecoCallBack;
@@ -88,7 +90,12 @@ public class VuforiaActivity extends FragmentActivity
         view.findViewById(R.id.btnCloseVuforia).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent i = new Intent();
+                i.putExtra(ImageRecognitionConstants.VUFORIA_PATTERN_ID, "");
+                setResult(Activity.RESULT_CANCELED, i);
                 finish();
+
             }
         });
         //endregion
@@ -158,11 +165,24 @@ public class VuforiaActivity extends FragmentActivity
     }
 
     private void sendRecognizedPatternToClient(String uniqueId) {
-        Intent i = new Intent();
-        i.putExtra(ImageRecognitionConstants.VUFORIA_PATTERN_ID, uniqueId);
-        String appId = getApplicationContext().getPackageName();
-        i.putExtra(appId, appId);
-        i.setAction(RECOGNIZED_IMAGE_INTENT);
-        this.sendBroadcast(i);
+        if (mCodeResult != -1) {
+
+            Intent i = new Intent();
+            i.putExtra(ImageRecognitionConstants.VUFORIA_PATTERN_ID, uniqueId);
+            i.setAction(RECOGNIZED_IMAGE_INTENT);
+            setResult(Activity.RESULT_OK, i);
+            finish();
+
+
+
+
+        } else {
+            Intent i = new Intent();
+            i.putExtra(ImageRecognitionConstants.VUFORIA_PATTERN_ID, uniqueId);
+            String appId = getApplicationContext().getPackageName();
+            i.putExtra(appId, appId);
+            i.setAction(RECOGNIZED_IMAGE_INTENT);
+            this.sendBroadcast(i);
+        }
     }
 }
