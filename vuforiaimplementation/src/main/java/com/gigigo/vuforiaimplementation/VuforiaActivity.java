@@ -36,6 +36,14 @@ public class VuforiaActivity extends FragmentActivity
         super.onCreate(state);
         GGGLogImpl.log("VuforiaActivity.onCreate");
         initVuforiaKeys(getIntent());
+        initGetCodeForResult(getIntent());
+    }
+
+    private void initGetCodeForResult(Intent intent) {
+        int codeResultAux = intent.getIntExtra(ImageRecognitionVuforiaImpl.IMAGE_RECOGNITION_CODE_RESULT, -1);
+        if (codeResultAux != -1) {
+            this.mCodeResult = codeResultAux;
+        }
     }
 
     //region implements CloudRecoCommunicator ands initializations calls
@@ -166,16 +174,11 @@ public class VuforiaActivity extends FragmentActivity
 
     private void sendRecognizedPatternToClient(String uniqueId) {
         if (mCodeResult != -1) {
-
             Intent i = new Intent();
             i.putExtra(ImageRecognitionConstants.VUFORIA_PATTERN_ID, uniqueId);
             i.setAction(RECOGNIZED_IMAGE_INTENT);
             setResult(Activity.RESULT_OK, i);
             finish();
-
-
-
-
         } else {
             Intent i = new Intent();
             i.putExtra(ImageRecognitionConstants.VUFORIA_PATTERN_ID, uniqueId);
