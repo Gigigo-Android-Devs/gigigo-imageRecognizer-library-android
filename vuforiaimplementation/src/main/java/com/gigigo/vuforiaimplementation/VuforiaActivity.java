@@ -177,7 +177,7 @@ public class VuforiaActivity extends FragmentActivity
             i.putExtra(ImageRecognitionConstants.VUFORIA_PATTERN_ID, uniqueId);
             i.setAction(RECOGNIZED_IMAGE_INTENT);
             setResult(Activity.RESULT_OK, i);
-            finish();
+            VuforiaActivity.this.finish();
         } else {
             Intent i = new Intent();
             i.putExtra(ImageRecognitionConstants.VUFORIA_PATTERN_ID, uniqueId);

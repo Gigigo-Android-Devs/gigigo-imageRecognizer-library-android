@@ -2,8 +2,10 @@ package com.gigigo.imagerecognition;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
 import com.gigigo.ggglib.ContextProvider;
@@ -47,8 +49,17 @@ public class MainActivity extends Activity {
 
         ImageRecognitionVuforiaImpl imageRecognitionVuforia = new ImageRecognitionVuforiaImpl();
         imageRecognitionVuforia.setContextProvider(createContextProvider());
-        imageRecognitionVuforia.startImageRecognition(imageRecognitionCredentials);
+        imageRecognitionVuforia.startImageRecognitionForResult(imageRecognitionCredentials,100);
+        //new example
 
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Log.i("Result",""+requestCode+""+resultCode);
     }
 
     private ContextProvider createContextProvider() {

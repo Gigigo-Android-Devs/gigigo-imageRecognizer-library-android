@@ -138,7 +138,7 @@ public class ImageRecognitionVuforiaImpl implements ImageRecognition, UserPermis
 
     private void startImageRecognitionForResultIntent() {
         Intent imageRecognitionIntent = new Intent(contextProvider.getApplicationContext(), VuforiaActivity.class);
-        imageRecognitionIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+      //  imageRecognitionIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         Bundle b = new Bundle();
         b.putParcelable(IMAGE_RECOGNITION_CREDENTIALS, credentials);
