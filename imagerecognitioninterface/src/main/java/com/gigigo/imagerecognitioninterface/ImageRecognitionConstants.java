@@ -6,6 +6,10 @@ package com.gigigo.imagerecognitioninterface;
  */
 public class ImageRecognitionConstants {
 
-  public static final String VUFORIA_PATTERN_ID = "VUFORIA_PATTERN_ID";
+    public static final String VUFORIA_PATTERN_ID = "VUFORIA_PATTERN_ID";//string
+    public static final String VUFORIA_PATTERN_NAME = "VUFORIA_PATTERN_NAME";//string
+    public static final String VUFORIA_PATTERN_SIZE = "VUFORIA_PATTERN_SIZE"; //float
+    public static final String VUFORIA_PATTERN_METADATA = "VUFORIA_PATTERN_METADATA"; //String
+    public static final String VUFORIA_PATTERN_TRACK_RATING = "VUFORIA_PATTERN_TRACK_RATING"; //short
 
 }

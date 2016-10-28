@@ -655,7 +655,9 @@ public class CloudRecognition implements ApplicationControl {
                     if (mExtendedTracking) trackable.startExtendedTracking();
 
                     //raise result 2 vuforiaactivity over pipe/communicator
-                    this.mCommunicator.onVuforiaResult(trackable, result.getUniqueTargetId());
+
+                   // this.mCommunicator.onVuforiaResult(trackable, result.getUniqueTargetId());
+                    this.mCommunicator.onVuforiaResult(trackable, result);
                 }
             }
         }

@@ -19,6 +19,7 @@ import com.gigigo.imagerecognitioninterface.ImageRecognitionConstants;
 import com.gigigo.vuforiacore.sdkimagerecognition.icloudrecognition.CloudRecognitionActivityLifeCycleCallBack;
 import com.gigigo.vuforiacore.sdkimagerecognition.icloudrecognition.ICloudRecognitionCommunicator;
 import com.gigigo.vuforiaimplementation.credentials.ParcelableVuforiaCredentials;
+import com.vuforia.TargetSearchResult;
 import com.vuforia.Trackable;
 
 public class VuforiaActivity extends FragmentActivity
@@ -166,26 +167,39 @@ public class VuforiaActivity extends FragmentActivity
     //endregion
 
     @Override
-    public void onVuforiaResult(Trackable trackable, String uniqueId) {
+    public void onVuforiaResult(Trackable trackable, TargetSearchResult result) {
         scanlineStop();
-        sendRecognizedPatternToClient(uniqueId);
+        sendRecognizedPatternToClient(result);
     }
 
-    private void sendRecognizedPatternToClient(String uniqueId) {
+    private void sendRecognizedPatternToClient(TargetSearchResult result) {
+
+        Intent i = setDataIntent(result);
+
+        //or start4result, and setresult, or callback by the broadcast
         if (mCodeResult != -1) {
-            Intent i = new Intent();
-            i.putExtra(ImageRecognitionConstants.VUFORIA_PATTERN_ID, uniqueId);
-            i.setAction(RECOGNIZED_IMAGE_INTENT);
             setResult(Activity.RESULT_OK, i);
-            VuforiaActivity.this.finish();
+            finish();
         } else {
-            Intent i = new Intent();
-            i.putExtra(ImageRecognitionConstants.VUFORIA_PATTERN_ID, uniqueId);
+            //we add package appid,
             String appId = getApplicationContext().getPackageName();
             i.putExtra(appId, appId);
-            i.setAction(RECOGNIZED_IMAGE_INTENT);
             this.sendBroadcast(i);
             finish();
         }
+    }
+
+    private Intent setDataIntent(TargetSearchResult result) {
+        Intent i = new Intent();
+        if (result.getUniqueTargetId() != null)
+            i.putExtra(ImageRecognitionConstants.VUFORIA_PATTERN_ID, result.getUniqueTargetId());
+        if (result.getTargetName() != null)
+            i.putExtra(ImageRecognitionConstants.VUFORIA_PATTERN_NAME, result.getTargetName());
+        if (result.getMetaData() != null)
+            i.putExtra(ImageRecognitionConstants.VUFORIA_PATTERN_METADATA, result.getMetaData());
+        i.putExtra(ImageRecognitionConstants.VUFORIA_PATTERN_SIZE, result.getTargetSize());
+        i.putExtra(ImageRecognitionConstants.VUFORIA_PATTERN_TRACK_RATING, result.getTrackingRating());
+        i.setAction(RECOGNIZED_IMAGE_INTENT);
+        return i;
     }
 }
