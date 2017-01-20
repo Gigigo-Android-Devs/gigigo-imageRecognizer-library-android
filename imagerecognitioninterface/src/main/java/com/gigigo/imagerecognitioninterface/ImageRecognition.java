@@ -6,11 +6,6 @@ package com.gigigo.imagerecognitioninterface;
  */
 public interface ImageRecognition {
 
-  /**
-   *We need the Application of the Implementation for control the activities inside the module,
-   * for determining state foreground/background
-   */
-    Object getApplicationClass();
 
 
   /**

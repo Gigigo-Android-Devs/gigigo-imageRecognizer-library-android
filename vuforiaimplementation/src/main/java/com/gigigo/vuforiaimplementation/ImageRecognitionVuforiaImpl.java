@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.os.Handler;
+import android.os.Looper;
 import com.gigigo.ggglib.ContextProvider;
 import com.gigigo.ggglib.permissions.AndroidPermissionCheckerImpl;
 import com.gigigo.ggglib.permissions.Permission;
@@ -28,7 +30,7 @@ public class ImageRecognitionVuforiaImpl implements ImageRecognition, UserPermis
     public static final String IMAGE_RECOGNITION_CREDENTIALS = "IMAGE_RECOGNITION_CREDENTIALS";
     public static final String IMAGE_RECOGNITION_CODE_RESULT = "IMAGE_RECOGNITION_CODE_RESULT";
 
-    private ContextProvider contextProvider;
+    private static ContextProvider contextProvider;
     private PermissionChecker permissionChecker;
     private final Permission cameraPermission;
 
@@ -36,10 +38,6 @@ public class ImageRecognitionVuforiaImpl implements ImageRecognition, UserPermis
 
     public ImageRecognitionVuforiaImpl() {
         this.cameraPermission = new CameraPermissionImpl();
-    }
-
-    @Override public Object getApplicationClass() {
-        return  App.getApplication();
     }
 
     @Override
@@ -152,5 +150,26 @@ public class ImageRecognitionVuforiaImpl implements ImageRecognition, UserPermis
         contextProvider.getCurrentActivity().startActivityForResult( imageRecognitionIntent,mCodeForResult);
 
 
+    }
+
+
+    /*we need a persistesd context(ImageRecognitionVuforiaImpl.getContextProvider().getApplicationContext()):
+the problem, is sometimes the net confirmation of action is more quickly than finished of vuforia activity
+the solution is use context exist in life of runnable and complety sure exist when run sendBroadcast
+and the next problem is wait for complete vuforia activity finishing for when receive the action the
+activity caller vuforia is started again, for show alertDialog
+*/
+    public static void sendRecognizedPattern(final Intent i) {
+
+        Handler mHandler = new Handler(Looper.getMainLooper());
+        mHandler.postDelayed(new Runnable() {
+            @Override public void run() {
+                try {
+                    contextProvider.getApplicationContext().sendBroadcast(i);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }, 1500);
     }
 }

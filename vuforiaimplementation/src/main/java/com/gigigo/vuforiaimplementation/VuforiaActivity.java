@@ -173,9 +173,7 @@ public class VuforiaActivity extends FragmentActivity
     }
 
     private void sendRecognizedPatternToClient(TargetSearchResult result) {
-
         Intent i = setDataIntent(result);
-
         //or start4result, and setresult, or callback by the broadcast
         if (mCodeResult != -1) {
             setResult(Activity.RESULT_OK, i);
@@ -184,7 +182,7 @@ public class VuforiaActivity extends FragmentActivity
             //we add package appid,
             String appId = getApplicationContext().getPackageName();
             i.putExtra(appId, appId);
-            this.sendBroadcast(i);
+            ImageRecognitionVuforiaImpl.sendRecognizedPattern(i);
             finish();
         }
     }
