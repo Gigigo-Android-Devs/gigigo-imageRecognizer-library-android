@@ -38,6 +38,10 @@ public class ImageRecognitionVuforiaImpl implements ImageRecognition, UserPermis
         this.cameraPermission = new CameraPermissionImpl();
     }
 
+    @Override public Object getApplicationClass() {
+        return  App.getApplication();
+    }
+
     @Override
     public <T> void setContextProvider(T contextProvider) {
         this.contextProvider = (ContextProvider) contextProvider;

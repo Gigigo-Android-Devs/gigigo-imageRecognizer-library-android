@@ -5,6 +5,14 @@ package com.gigigo.imagerecognitioninterface;
  * Date 29/4/16.
  */
 public interface ImageRecognition {
+
+  /**
+   *We need the Application of the Implementation for control the activities inside the module,
+   * for determining state foreground/background
+   */
+    Object getApplicationClass();
+
+
   /**
    * You MUST Call this method before calling startImageRecognition in order to provide a valid
    * context provider, Android context is not enough because this implementation should match
