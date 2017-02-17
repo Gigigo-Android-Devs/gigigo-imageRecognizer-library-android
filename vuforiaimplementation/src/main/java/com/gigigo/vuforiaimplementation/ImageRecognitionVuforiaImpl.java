@@ -37,7 +37,7 @@ public class ImageRecognitionVuforiaImpl implements ImageRecognition, UserPermis
     private ParcelableVuforiaCredentials credentials;
 
     public ImageRecognitionVuforiaImpl() {
-        this.cameraPermission = new CameraPermissionImpl(contextProvider.getCurrentActivity());
+        this.cameraPermission = new CameraPermissionImpl(contextProvider.getApplicationContext());
     }
 
     @Override
