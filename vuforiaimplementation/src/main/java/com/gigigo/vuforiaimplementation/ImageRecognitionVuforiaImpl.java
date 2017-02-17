@@ -32,18 +32,20 @@ public class ImageRecognitionVuforiaImpl implements ImageRecognition, UserPermis
 
     private static ContextProvider contextProvider;
     private PermissionChecker permissionChecker;
-    private final Permission cameraPermission;
+    private  Permission cameraPermission;
 
     private ParcelableVuforiaCredentials credentials;
 
     public ImageRecognitionVuforiaImpl() {
-        this.cameraPermission = new CameraPermissionImpl(contextProvider.getApplicationContext());
+
     }
 
     @Override
     public <T> void setContextProvider(T contextProvider) {
         this.contextProvider = (ContextProvider) contextProvider;
         this.permissionChecker = new AndroidPermissionCheckerImpl(this.contextProvider.getApplicationContext(), this.contextProvider);
+
+        this.cameraPermission = new CameraPermissionImpl(this.contextProvider.getApplicationContext());
     }
 
     /**
