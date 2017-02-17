@@ -32,7 +32,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile('com.github.GigigoGreenLabs.gggUtilsSuite:ggglib:1.1') {
+    compile('com.github.GigigoGreenLabs.gggUtilsSuite:ggglib:3.6') {
         exclude group: 'com.squareup.retrofit2', module: 'retrofit'
         exclude group: 'com.squareup.retrofit2', module: 'converter-gson'
         exclude group: 'com.squareup.okhttp3', module: 'okhttp'

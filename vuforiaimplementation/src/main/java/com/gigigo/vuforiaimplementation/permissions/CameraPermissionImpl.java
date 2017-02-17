@@ -1,6 +1,7 @@
 package com.gigigo.vuforiaimplementation.permissions;
 
 import android.Manifest;
+import android.content.Context;
 import com.gigigo.ggglib.permissions.Permission;
 import com.gigigo.vuforiaimplementation.R;
 
@@ -9,6 +10,11 @@ import com.gigigo.vuforiaimplementation.R;
  * Date 6/5/16.
  */
 public class CameraPermissionImpl implements Permission {
+  Context mContext;
+
+  public CameraPermissionImpl(Context context) {
+    this.mContext = context;
+  }
 
   @Override public String getAndroidPermissionStringType() {
     return Manifest.permission.CAMERA;
@@ -28,5 +34,13 @@ public class CameraPermissionImpl implements Permission {
 
   @Override public int getPermissionRationaleMessage() {
     return R.string.ir_permission_rationale_message_camera;
+  }
+
+  @Override public int getNumRetry() {
+    if (mContext != null) {
+      return mContext.getResources().getInteger(R.integer.ir_permission_retries_camera);
+    } else {
+      return 0;
+    }
   }
 }

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <integer name="ir_permission_retries_camera">-1</integer>
+</resources>
