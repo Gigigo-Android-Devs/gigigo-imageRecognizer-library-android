@@ -1,27 +1,16 @@
 apply plugin: 'com.android.application'
 
-//def VUFORIA_KEY =  '"'  + parent.ext.props.vuforiaKey + '"'
-//def VUFORIA_SECRET =  '"'  + parent.ext.props.vuforiaSecret + '"'
-//def VUFORIA_LICENSE =  '"' + parent.ext.props.vuforiaLicense + '"'
-
-
-
-
-
 android {
-  compileSdkVersion 23
-  buildToolsVersion "23.0.3"
+  compileSdkVersion rootProject.ext.androidCompileSdkVersion
+  buildToolsVersion rootProject.ext.androidBuildToolsVersion
 
   defaultConfig {
-    applicationId "com.gigigo.imagerecognition"
-    minSdkVersion 10
-    targetSdkVersion 23
+    minSdkVersion rootProject.androidMinSdkVersion
+    targetSdkVersion rootProject.androidTargetSdkVersion
+
+    applicationId "com.gigigo.imagerecognition.demo_app"
     versionCode 1
     versionName "1.0"
-
-//    buildConfigField "String", "VUFORIA_KEY", VUFORIA_KEY
-//    buildConfigField "String", "VUFORIA_SECRET", VUFORIA_SECRET
-//    buildConfigField "String", "VUFORIA_LICENSE", VUFORIA_LICENSE
   }
   buildTypes {
     release {
@@ -34,14 +23,14 @@ android {
     sourceCompatibility JavaVersion.VERSION_1_7
     targetCompatibility JavaVersion.VERSION_1_7
   }
-
 }
 
 dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
-  compile project(':vuforiaimplementation')
 
-  testCompile 'junit:junit:4.12'
-  //compile 'com.android.support:appcompat-v7:24.2.1'
-  compile 'com.android.support:appcompat-v7:23.1.1'
+  compile rootProject.ext.libraries.androidSupportV7
+
+  compile rootProject.ext.libraries.gggLibDevice
+
+  compile rootProject.ext.modules.vuforiaImplementation
 }

@@ -2,7 +2,7 @@ package com.gigigo.vuforiaimplementation.permissions;
 
 import android.Manifest;
 import android.content.Context;
-import com.gigigo.ggglib.permissions.Permission;
+import com.gigigo.permissions.interfaces.Permission;
 import com.gigigo.vuforiaimplementation.R;
 
 /**

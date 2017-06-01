@@ -2,50 +2,43 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+  compileSdkVersion rootProject.ext.androidCompileSdkVersion
+  buildToolsVersion rootProject.ext.androidBuildToolsVersion
 
-    defaultConfig {
-        minSdkVersion 10
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+  defaultConfig {
+    minSdkVersion rootProject.androidMinSdkVersion
+    targetSdkVersion rootProject.androidTargetSdkVersion
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-    lintOptions {
-        abortOnError false
-    }
+  }
+  lintOptions {
+    abortOnError false
+  }
 
-    sourceSets.main {
-        jniLibs.srcDir 'libs'
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
-    }
+  sourceSets.main {
+    jniLibs.srcDir 'libs'
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_7
+    targetCompatibility JavaVersion.VERSION_1_7
+  }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    //with need gggLIb only for
-    compile('com.github.GigigoGreenLabs.gggUtilsSuite:ggglib:3.9') {
-        exclude group: 'com.squareup.retrofit2', module: 'retrofit'
-        exclude group: 'com.squareup.retrofit2', module: 'converter-gson'
-        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
-        exclude group: 'com.squareup.okio', module: 'okio'
-    }
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  compile rootProject.ext.libraries.gggLibLogger
+  compile rootProject.ext.libraries.gggLibPermission
 }
 // build a jar with source files
 task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
+  from android.sourceSets.main.java.srcDirs
+  classifier = 'sources'
 }
 
 artifacts {
-    archives sourcesJar
+  archives sourcesJar
 }
