@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.gigigo.vuforiacore">
+    package="com.gigigo.vuforia.core">
 
     <application
         android:allowBackup="true"

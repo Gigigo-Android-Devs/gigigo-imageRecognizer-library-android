@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import com.gigigo.ggglib.device.providers.ContextProvider;
-import com.gigigo.imagerecognitioninterface.ImageRecognitionCredentials;
-import com.gigigo.vuforiaimplementation.ImageRecognitionVuforia;
+import com.gigigo.imagerecognition.core.ImageRecognitionCredentials;
+import com.gigigo.imagerecognition.vuforia.ImageRecognitionVuforia;
 
 public class MainActivity extends Activity {
 
