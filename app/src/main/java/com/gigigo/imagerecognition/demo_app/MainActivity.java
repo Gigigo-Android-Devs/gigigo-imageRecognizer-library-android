@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.View;
 import com.gigigo.ggglib.device.providers.ContextProvider;
 import com.gigigo.imagerecognitioninterface.ImageRecognitionCredentials;
-import com.gigigo.vuforiaimplementation.ImageRecognitionVuforiaImpl;
+import com.gigigo.vuforiaimplementation.ImageRecognitionVuforia;
 
 public class MainActivity extends Activity {
 
@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
       }
     };
 
-    ImageRecognitionVuforiaImpl imageRecognitionVuforia = new ImageRecognitionVuforiaImpl();
+    ImageRecognitionVuforia imageRecognitionVuforia = new ImageRecognitionVuforia();
     imageRecognitionVuforia.setContextProvider(createContextProvider());
     imageRecognitionVuforia.startImageRecognitionForResult(imageRecognitionCredentials, 100);
     //new example

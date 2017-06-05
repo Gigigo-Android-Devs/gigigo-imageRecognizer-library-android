@@ -1,20 +1,17 @@
-package com.gigigo.vuforiacore.sdkimagerecognition.icloudrecognition;
+package com.gigigo.vuforiacore.sdkimagerecognition.cloudrecognition;
 
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
-import android.util.Log;
 
 import com.gigigo.vuforiacore.sdkimagerecognition.vuforiaenvironment.VuforiaSession;
 import com.gigigo.vuforiacore.sdkimagerecognition.vuforiaenvironment.utils.CubeShaders;
 import com.gigigo.vuforiacore.sdkimagerecognition.vuforiaenvironment.utils.Texture;
 import com.gigigo.vuforiacore.sdkimagerecognition.vuforiaenvironment.utils.VuforiaUtils;
 import com.vuforia.Matrix44F;
-import com.vuforia.ObjectTarget;
 import com.vuforia.Renderer;
 import com.vuforia.State;
 import com.vuforia.Tool;
-import com.vuforia.Trackable;
 import com.vuforia.TrackableResult;
 import com.vuforia.VIDEO_BACKGROUND_REFLECTION;
 import com.vuforia.Vuforia;

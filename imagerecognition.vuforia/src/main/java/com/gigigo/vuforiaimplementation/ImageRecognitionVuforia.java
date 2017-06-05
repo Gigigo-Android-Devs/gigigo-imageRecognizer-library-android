@@ -23,7 +23,7 @@ import com.gigigo.vuforiaimplementation.permissions.CameraPermissionImpl;
  * <p/>
  * This class is already managing Camera permissions implementation.
  */
-public class ImageRecognitionVuforiaImpl
+public class ImageRecognitionVuforia
     implements ImageRecognition, UserPermissionRequestResponseListener {
 
   public static final String IMAGE_RECOGNITION_CREDENTIALS = "IMAGE_RECOGNITION_CREDENTIALS";
@@ -38,7 +38,7 @@ public class ImageRecognitionVuforiaImpl
   private Permission cameraPermission;
   private ParcelableVuforiaCredentials credentials;
 
-  public ImageRecognitionVuforiaImpl() {
+  public ImageRecognitionVuforia() {
 
   }
 

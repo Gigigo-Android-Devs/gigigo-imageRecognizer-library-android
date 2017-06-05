@@ -1,4 +1,4 @@
-package com.gigigo.vuforiacore.sdkimagerecognition.icloudrecognition;
+package com.gigigo.vuforiacore.sdkimagerecognition.cloudrecognition;
 
 import android.app.Activity;
 import android.app.AlertDialog;

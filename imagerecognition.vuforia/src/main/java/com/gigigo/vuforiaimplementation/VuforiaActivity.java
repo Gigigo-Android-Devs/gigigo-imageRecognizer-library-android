@@ -17,8 +17,8 @@ import android.widget.RelativeLayout;
 
 import com.gigigo.ggglib.logger.GGGLogImpl;
 import com.gigigo.imagerecognitioninterface.ImageRecognitionConstants;
-import com.gigigo.vuforiacore.sdkimagerecognition.icloudrecognition.CloudRecognitionActivityLifeCycleCallBack;
-import com.gigigo.vuforiacore.sdkimagerecognition.icloudrecognition.ICloudRecognitionCommunicator;
+import com.gigigo.vuforiacore.sdkimagerecognition.cloudrecognition.CloudRecognitionActivityLifeCycleCallBack;
+import com.gigigo.vuforiacore.sdkimagerecognition.cloudrecognition.ICloudRecognitionCommunicator;
 import com.gigigo.vuforiaimplementation.credentials.ParcelableVuforiaCredentials;
 import com.vuforia.TargetSearchResult;
 import com.vuforia.Trackable;
@@ -42,7 +42,7 @@ public class VuforiaActivity extends FragmentActivity
     }
 
     private void initGetCodeForResult(Intent intent) {
-        int codeResultAux = intent.getIntExtra(ImageRecognitionVuforiaImpl.IMAGE_RECOGNITION_CODE_RESULT, -1);
+        int codeResultAux = intent.getIntExtra(ImageRecognitionVuforia.IMAGE_RECOGNITION_CODE_RESULT, -1);
         if (codeResultAux != -1) {
             this.mCodeResult = codeResultAux;
         }
@@ -50,8 +50,9 @@ public class VuforiaActivity extends FragmentActivity
 
     //region implements CloudRecoCommunicator ands initializations calls
     private void initVuforiaKeys(Intent intent) {
-        Bundle b = intent.getBundleExtra(ImageRecognitionVuforiaImpl.IMAGE_RECOGNITION_CREDENTIALS);
-        ParcelableVuforiaCredentials parcelableVuforiaCredentials = b.getParcelable(ImageRecognitionVuforiaImpl.IMAGE_RECOGNITION_CREDENTIALS);
+        Bundle b = intent.getBundleExtra(ImageRecognitionVuforia.IMAGE_RECOGNITION_CREDENTIALS);
+        ParcelableVuforiaCredentials parcelableVuforiaCredentials = b.getParcelable(
+            ImageRecognitionVuforia.IMAGE_RECOGNITION_CREDENTIALS);
 
         mCloudRecoCallBack = new CloudRecognitionActivityLifeCycleCallBack(this, this,
                 parcelableVuforiaCredentials.getClientAccessKey(),
@@ -183,7 +184,7 @@ public class VuforiaActivity extends FragmentActivity
             //we add package appid,
             String appId = getApplicationContext().getPackageName();
             i.putExtra(appId, appId);
-            ImageRecognitionVuforiaImpl.sendRecognizedPattern(i);
+            ImageRecognitionVuforia.sendRecognizedPattern(i);
             finish();
         }
     }

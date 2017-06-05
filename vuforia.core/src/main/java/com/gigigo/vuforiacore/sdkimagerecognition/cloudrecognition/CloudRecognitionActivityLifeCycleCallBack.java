@@ -1,4 +1,4 @@
-package com.gigigo.vuforiacore.sdkimagerecognition.icloudrecognition;
+package com.gigigo.vuforiacore.sdkimagerecognition.cloudrecognition;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
