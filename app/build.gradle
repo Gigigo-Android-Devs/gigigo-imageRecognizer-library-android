@@ -36,5 +36,5 @@ dependencies {
 
   compile rootProject.ext.libraries.gggLibDevice
 
-  compile rootProject.ext.modules.vuforiaImplementation
+  compile rootProject.ext.modules.imageRecognitionVuforia
 }
