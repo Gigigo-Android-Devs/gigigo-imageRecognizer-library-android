@@ -1,4 +1,6 @@
 apply from: 'dependencies.gradle'
+apply from: 'common_methods.gradle'
+apply from: 'gradle/jacoco.gradle'
 
 buildscript {
   repositories {
@@ -27,6 +29,17 @@ allprojects {
     jcenter()
     mavenCentral()
     maven { url "https://jitpack.io" }
+  }
+
+  apply plugin: 'checkstyle'
+
+  task checkstyle(type: Checkstyle) {
+    configFile file("${project.rootDir}/checkstyle.xml")
+    source 'src'
+    include '**/*.java'
+    exclude '**/gen/**'
+
+    classpath = files()
   }
 }
 task clean(type: Delete) {
