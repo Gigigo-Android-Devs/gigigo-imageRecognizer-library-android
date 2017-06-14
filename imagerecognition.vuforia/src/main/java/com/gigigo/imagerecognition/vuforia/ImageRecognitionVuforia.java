@@ -5,13 +5,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import com.gigigo.ggglib.device.providers.ContextProvider;
+import com.gigigo.ggglib.permission.PermissionWrapper;
+import com.gigigo.ggglib.permission.listeners.UserPermissionRequestResponseListener;
 import com.gigigo.imagerecognition.core.ImageRecognition;
 import com.gigigo.imagerecognition.core.ImageRecognitionCredentials;
 import com.gigigo.imagerecognition.core.NotFoundContextException;
-import com.gigigo.permissions.PermissionCheckerImpl;
-import com.gigigo.permissions.interfaces.Permission;
-import com.gigigo.permissions.interfaces.PermissionChecker;
-import com.gigigo.permissions.interfaces.UserPermissionRequestResponseListener;
 import com.gigigo.imagerecognition.vuforia.credentials.ParcelableIrCredentialsAdapter;
 import com.gigigo.imagerecognition.vuforia.credentials.ParcelableVuforiaCredentials;
 import com.gigigo.imagerecognition.vuforia.permissions.CameraPermissionImpl;
@@ -24,7 +22,9 @@ import com.gigigo.imagerecognition.vuforia.permissions.CameraPermissionImpl;
  * This class is already managing Camera permissions implementation.
  */
 public class ImageRecognitionVuforia
-    implements ImageRecognition, UserPermissionRequestResponseListener {
+    implements ImageRecognition{
+
+    //old permissions, UserPermissionRequestResponseListener {
 
   public static final String IMAGE_RECOGNITION_CREDENTIALS = "IMAGE_RECOGNITION_CREDENTIALS";
   public static final String IMAGE_RECOGNITION_CODE_RESULT = "IMAGE_RECOGNITION_CODE_RESULT";
@@ -34,8 +34,17 @@ public class ImageRecognitionVuforia
    * NEW start for redder/destapp
    ************************************/
   int mCodeForResult = -1;
-  private PermissionChecker permissionChecker;
-  private Permission cameraPermission;
+  //region old permissions
+  //private PermissionChecker permissionChecker;
+  //private Permission cameraPermission;
+  //endregion
+//region variables new permissions
+  //we can use override resources and use com.gigigo.ggglib.permission.permissions.PermissionCamera;
+  //or we can use our custom PermissionCamera and override there strings values
+  private CameraPermissionImpl mPermissionCamera;
+  //private PermissionCamera mPermissionCamera;
+  PermissionWrapper mPermissionWrapper;
+  //endregion
   private ParcelableVuforiaCredentials credentials;
 
   public ImageRecognitionVuforia() {
@@ -64,8 +73,24 @@ activity caller vuforia is started again, for show alertDialog
 
   @Override public <T> void setContextProvider(T contextProvider) {
     this.contextProvider = (ContextProvider) contextProvider;
-    this.permissionChecker = new PermissionCheckerImpl(this.contextProvider.getCurrentActivity());
-    this.cameraPermission = new CameraPermissionImpl(this.contextProvider.getApplicationContext());
+
+    //region new permissions
+    if(this.contextProvider!=null && this.contextProvider.getCurrentActivity()!=null
+        && this.contextProvider.getCurrentActivity().getApplication()!=null) {
+        mPermissionWrapper =
+          new PermissionWrapper(this.contextProvider.getCurrentActivity().getApplication());
+      //  mPermissionCamera = new PermissionCamera(PermissionGroupCamera.CAMERA);
+        mPermissionCamera = new CameraPermissionImpl();
+    }
+
+
+    //fixme asv ojito si el mPermissionWrapper es nulo lo mismo se enbucla reueteando permisos
+    //endregion
+
+    //region old
+    //this.permissionChecker = new PermissionCheckerImpl(this.contextProvider.getCurrentActivity());
+    //this.cameraPermission = new CameraPermissionImpl(this.contextProvider.getApplicationContext());
+    //endregion
   }
 
   /**
@@ -81,7 +106,7 @@ activity caller vuforia is started again, for show alertDialog
 
     this.credentials = digestCredentials(credentials);
 
-    if (permissionChecker.isGranted(cameraPermission)) {
+    if (mPermissionWrapper.isGranted(mPermissionCamera)) {
       startImageRecognitionActivity();
     } else {
       requestPermissions();
@@ -94,7 +119,7 @@ activity caller vuforia is started again, for show alertDialog
     }
   }
 
-  @Override public void onPermissionAllowed(boolean permissionAllowed, int i) {
+ /*ols permissions @Override public void onPermissionAllowed(boolean permissionAllowed, int i) {
     if (permissionAllowed) {
       if (is_for_result) {
         startImageRecognitionForResult();
@@ -102,12 +127,30 @@ activity caller vuforia is started again, for show alertDialog
         startImageRecognitionActivity();
       }
     }
-  }
+  }*/
 
   private void requestPermissions() {
-    if (contextProvider.isActivityContextAvailable()) {
-      permissionChecker.askForPermission(this, cameraPermission);
+    //region old permission
+    //if (contextProvider.isActivityContextAvailable()) {
+    //  permissionChecker.askForPermission(this, cameraPermission);
+    //}
+    //endregion
+
+    //region new permission
+    if (mPermissionWrapper!=null) {
+      mPermissionWrapper.askForPermission(new UserPermissionRequestResponseListener() {
+        @Override public void onPermissionAllowed(boolean permissionAllowed, int numRetries) {
+          if (permissionAllowed) {
+            if (is_for_result) {
+              startImageRecognitionForResult();
+            } else {
+              startImageRecognitionActivity();
+            }
+          }
+        }
+      }, mPermissionCamera);
     }
+    //endregion
   }
 
   private ParcelableVuforiaCredentials digestCredentials(
@@ -150,7 +193,8 @@ activity caller vuforia is started again, for show alertDialog
     is_for_result = true;
     checkContext();
 
-    if (permissionChecker.isGranted(cameraPermission)) {
+    //old permission if (permissionChecker.isGranted(cameraPermission)) {
+      if (mPermissionWrapper!=null && mPermissionWrapper.isGranted(mPermissionCamera)) {
       startImageRecognitionForResultIntent();
     } else {
       requestPermissions();

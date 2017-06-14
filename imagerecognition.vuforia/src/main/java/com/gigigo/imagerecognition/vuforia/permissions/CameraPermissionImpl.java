@@ -1,19 +1,16 @@
 package com.gigigo.imagerecognition.vuforia.permissions;
 
 import android.Manifest;
-import android.content.Context;
-import com.gigigo.permissions.interfaces.Permission;
+import com.gigigo.ggglib.permission.permissions.Permission;
 import com.gigigo.imagerecognition.vuforia.R;
 
 /**
  * Created by Sergio Martinez Rodriguez
  * Date 6/5/16.
  */
+@Deprecated //asv esta clase la podemos eliminar utilizando los string para sobreescribir o reutilizarla
 public class CameraPermissionImpl implements Permission {
-  Context mContext;
-
-  public CameraPermissionImpl(Context context) {
-    this.mContext = context;
+  public CameraPermissionImpl( ) {
   }
 
   @Override public String getAndroidPermissionStringType() {
@@ -37,10 +34,6 @@ public class CameraPermissionImpl implements Permission {
   }
 
   @Override public int getNumRetry() {
-    if (mContext != null) {
-      return mContext.getResources().getInteger(R.integer.ir_permission_retries_camera);
-    } else {
-      return 0;
-    }
+      return  (R.integer.ir_permission_retries_camera); //infinito
   }
 }
